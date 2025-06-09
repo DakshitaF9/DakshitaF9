@@ -1,0 +1,305 @@
+=== FORMS: KEY-VALUE PAIRS ===
+AWS Data Transfer: 0
+Data Transfer: 2,267.10
+AWS Data Transfer: GB for in Asia Pacific (Hong APS3-APN1-AWS-In-Bytes
+Service provider: Amazon Web Services India Private Limited
+Bill issued: May 2, 2025
+Document type: Invoice
+Total received payments: USD 6,210.90
+Total in invoice currency: INR 528,988.87
+Total in USD: USD 6,210.90
+Charge type: Usage
+Account ID: 866403326326
+Total in invoice currency: INR 528,988.87
+Date printed: May 30, 2025
+Invoice ID: 2138692881
+Billing period: Apr 1 - Apr 30, 2025
+Service provider: Amazon Web Services India Private Limited
+Total pre-tax: USD 5,263.47
+Total in USD: USD 6,210.90
+Usage Quantity: 
+Bill status: Issued
+Payment status: Received
+Amazon Web Services India Private Limited: (16)
+Service name: 
+Trend compared to prior month: 53.9%
+Highest AWS Region spend: USD 5,261.19
+Grand total:: USD 6,210.90
+Received: 05/02/2025
+Asia Pacific (Mumbai): USD 2,267.10
+Trend compared to prior month: 9.5%
+Highest service spend: USD
+Region name: Asia Pacific (Mumbai)
+AWS Data Transfer APS3-AFS1-AWS-Out-Bytes: USD 0.00
+Description: Data Transfer
+USD 0.086 per GB for EUN1-AWS-Out-Bytes in Africa (Cape Town): USD 0.00
+$0.00 per GB Asia Pacific (Mumbai) data transfer from New Zealand (Auckland) GB: USD 0.00
+USD 0.0 per GB for APS3-AWS-In-Bytes in Africa (Cape Town): USD 0.00
+AWS Data Transfer APS3-AKL1-AWS-In-Bytes: USD 0.00
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to New Zealand (Auckland): USD 0.00
+Amount in USD: USD 2,267.10
+APS3-AFS1-AWS-In-Bytes: USD 0.00
+AWS Data Transfer APS3-AKL1-AWS-Out-Bytes: USD 0.00
+-: per GB
+AWS APS3-EUW3-AWS-Out-Bytes $0.086 per GB - Asia Pacific (Mumbai) data transfer to EU (Paris): 0 GB
+- -: per GB
+AWS Data Transfer: APS3-APS9-AWS-In-Bytes
+AWS Data Transfer $0.00 per GB - Asia: APS3-APS4-AWS-In-Bytes
+AWS Data Transfer APS3-EU-AWS-Out-Bytes $0.086 per GB - Asia Pacific (Mumbai) data transfer to EU: 
+AWS Data Transfer APS3-EU-AWS-In-Bytes $0.00 per GB Asia Pacific (Mumbai) data transfer from EU (Ireland): 0 GB
+AWS Data Transfer: APS3-EUS1-AWS-In-Bytes
+AWS Data Transfer: APS3-APN1-AWS-Out-Bytes
+AWS Data Transfer: APS3-APN2-AWS-In-Bytes
+AWS Data Transfer: APS3-EUN1-AWS-Out-Bytes
+AWS Data Transfer: APS3-APN2-AWS-Out-Bytes
+AWS Data Transfer: APS3-APS1-AWS-Out-Bytes
+AWS Data Transfer: APS3-APS1-AWS-In-Bytes
+Data Transfer: APS3-APS2-AWS-Out-Bytes
+Data Transfer: 
+USD 0 per GB for: APS3-EUS1-AWS-In-Bytes
+AWS Data Transfer: APS3-HAM1-AWS-In-Bytes
+AWS Data Transfer: APS3-EUW3-AWS-In-Bytes
+AWS Data Transfer: APS3-APN3-AWS-Out-Bytes
+AWS Data Transfer: APS3-EUW2-AWS-Out-Bytes
+AWS Data Transfer: APS3-QRO1-AWS-Out-Bytes
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to Australia (Perth): 0 GB
+$0.00 per GB - Asia Pacific (Mumbai) data transfer from Philippines (Manila): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to Philippines (Manila): 0 GB
+$0.00 per GB - Asia Pacific (Mumbai) data transfer from US West (Portland): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to US East(Miami): 0 GB
+$0.00 per GB - Asia Pacific (Mumbai) data transfer from US East (Philadelphia): 0 GB
+$0.000 per GB - Asia Pacific (Mumbai) data transfer from Mexico (Queretaro): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to Mexico (Queretaro): 0 GB
+$0.00 per GB - Asia Pacific (Mumbai) data transfer from South America (Sao Paulo): 0 GB
+AWS Data Transfer: APS3-SCL1-AWS-Out-Bytes
+$0 per GB Asia Pacific (Mumbai) Data Transfer to US West (Seattle): 0 GB
+AWS Data Transfer: 
+$0.00 per GB Asia Pacific (Mumbai) data transfer from US East: 0
+$0.00 per GB Asia Pacific (Mumbai) data transfer from US East (Houston): 0
+AWS Data Transfer APS3-MCI2-AWS-Out-Bytes: 
+Data Transfer APS3-LAS1-AWS-In-Bytes $0.00 per GB - Asia Pacific (Mumbai) data transfer from US West (Las Vegas): 
+APS3-LAX1-AWS-In-Bytes $0.00 per GB - Asia Pacific (Mumbai) data transfer from US West (Los Angeles): 0
+$0.00 per GB - Asia Pacific (Mumbai) data transfer from US East: 0 GB
+AWS Data Transfer APS3-MSP1-AWS-In-Bytes: 
+AWS Data Transfer APS3-PHL1-AWS-Out-Bytes: 
+$0.00 per GB Asia Pacific (Mumbai) data transfer from Australia (Perth): 0 GB
+$0 per GB - Asia Pacific (Mumbai) Data Transfer to US West (Phoenix): 0 GB
+APS3-MIA1-AWS-In-Bytes $0.00 per GB Asia Pacific (Mumbai) data transfer from US East(Miami): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) Data Transfer from US West (Phoenix): 0 GB
+AWS Data Transfer APS3-SCL1-AWS-In-Bytes: 
+$0.00 per GB Asia Pacific (Mumbai) data transfer from Chile (Santiago): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to Chile (Santiago): 0 GB
+$0.086 per GB - Asia Pacific (Mumbai) Data Transfer from US West (Seattle): 0 GB
+AWS Data Transfer: APS3-SAE1-AWS-In-Bytes
+AWS Data Transfer: APS3-SEA1-AWS-In-Bytes
+AWS Data Transfer: APS3-SEA1-AWS-Out-Bytes
+AWS Data Transfer: APS3-SAE1-AWS-Out-Bytes
+AWS Data Transfer: APS3-IAH1-AWS-In-Bytes
+AWS Data Transfer: APS3-HAM1-AWS-Out-Bytes
+AWS Data Transfer: APS3-IAH1-AWS-Out-Bytes
+AWS: 
+AWS Data Transfer: 
+AWS Data Transfer: APS3-LAS1-AWS-Out-Bytes
+AWS Data Transfer: APS3-LAX1-AWS-Out-Bytes
+$0.005 per In-use public IPv4 address: 30,289.009 Hrs
+Elastic Load Balancing: USD 307.89
+Any: USD 0.00
+Asia Pacific (Mumbai): USD 200.84
+Amazon Virtual Private Cloud APS3-VpcPeering-Out-Bytes: USD 4.95
+Amazon Simple Storage Service GeneralPurposeBuckets: USD 0.00
+$0.01 per GB for APS3-VpcPeering-Out-Bytes: USD 4.95
+AWS Data Transfer: APS3-USW2-AWS-In-Bytes
+Virtual Private Cloud: USD 1,605.50
+Asia Pacific (Mumbai): USD 307.89
+US East (N. Virginia): USD 0.00
+Simple Storage Service: USD 200.84
+Asia Pacific (Mumbai): USD 1,605.50
+Asia Pacific (Mumbai): USD 785.38
+Elastic Compute Cloud: USD 785.38
+Amazon Virtual Private Cloud APS3-VpcPeering-In-Bytes: USD 1,449.10
+$0.01 per GB for APS3-VpcPeering-In-Bytes: USD 1,449.10
+$0.005 per 1,000 PUT, COPY, POST, or LIST requests 588,360 Requests: USD 2.94
+per hour: USD 151.45
+Amazon Simple Storage Service APS3-Requests-Tier1: USD 4.03
+59,167,538 Requests: USD 23.67
+AWS Data Transfer: APS3-USW2-AWS-Out-Bytes
+AWS Data Transfer: APS3-WAW1-AWS-In-Bytes
+AWS Data Transfer: APS3-USE2-AWS-In-Bytes
+AWS Data Transfer: APS3-USW1-AWS-In-Bytes
+AWS Data Transfer: APS3-USE2-AWS-Out-Bytes
+AWS Data Transfer: APS3-USW1-AWS-Out-Bytes
+AWS Data Transfer: APS3-WAW1-AWS-Out-Bytes
+$0.005 per 1,000 PUT, COPY, POST, or LIST requests 218,848 Requests: USD 1.09
+Elastic Load Balancing - Application: USD 307.89
+15,254,181 Requests: USD 6.10
+Bandwidth: USD 0.00
+$0.090 per GB - first 10 TB / month data transfer out beyond the global free tier: USD 0.00
+Amazon Elastic Compute Cloud running Linux/UNIX: USD 684.01
+$0.008 per used Application load balancer capacity unit-hour (or partial hour) 19,127.64 LCU-Hrs: USD 153.02
+$0.0239 per Application LoadBalancer-hour (or partial hour) 6,480 Hrs: USD 154.87
+Amazon Simple Storage Service APS3-Requests-Tier2: USD 29.77
+Bandwidth: 
+CloudWatch: USD 0.40
+Simple Email Service: USD 0.04
+Simple Notification Service: USD 0.00
+Key Management Service: USD 0.00
+AWS Key Management Service ap-south-1-KMS-Requests: USD 0.00
+CodeCommit: USD 0.00
+AWS End User Messaging APS3-OutboundSMS-IN-Standard-Sharedroute-MessageFees: USD 18.35
+Amazon Elastic Container Service APS3-Fargate-vCPU-Hours:perCPU: USD 53.65
+AmazonCloudWatch PutLogEvents: USD 0.00
+USD1.0E-4 per Count for Recipients-EC2:Send in Asia Pacific (Mumbai): USD 0.04
+Amazon Simple Email Service Send: USD 0.04
+Amazon Simple Storage Service APS3-TimedStorage-ByteHrs: USD 167.04
+AWS End User Messaging APS3-OutboundSMS-IN-Standard-Sharedroute-MessageCount: USD 0.00
+Amazon EC2 Container Registry (ECR) APS3-TimedStorage-ByteHrs: USD 2.92
+End User Messaging: USD 18.35
+Asia Pacific (Mumbai): USD 18.35
+Asia Pacific (Mumbai): USD 0.52
+Asia Pacific (Mumbai): USD 72.09
+Amplify: USD 0.52
+EC2 Container Registry (ECR): USD 2.92
+Any: USD 0.00
+Asia Pacific (Mumbai): USD 0.00
+US East (N. Virginia): USD 0.00
+Elastic File System: USD 0.16
+Asia Pacific (Mumbai): USD 2.92
+Elastic Container Service: USD 72.09
+Route 53: USD 2.28
+Asia Pacific (Mumbai): USD 0.16
+Asia Pacific (Mumbai): USD 0.04
+Amazon Elastic Container Service APS3-Fargate-GB-Hours: USD 18.44
+Asia Pacific (Mumbai): USD 0.40
+Any: USD 2.00
+AWS Amplify APS3-DataStorage: USD 0.00
+AWS CodeCommit User-Month: USD 0.00
+AWS Fargate - Memory - Asia Pacific (Mumbai): USD 18.44
+Amazon CloudWatch: USD 0.40
+Amazon Simple Storage Service Requests-Tier1: USD 0.00
+$0.10 per GB-month of data storage: USD 2.92
+$0.00 for first 5 CodeCommit users 1 User-Month: USD 0.00
+$0.00 per request - Monthly Global Free Tier for KMS requests: USD 0.00
+0.467: GB-Mo
+Asia Pacific (Mumbai): USD 0.00
+$0.005 per 1,000 PUT, COPY, POST, or LIST requests: USD 0.00
+USD $0.0272 per GB-Mo for Standard-Infrequent Access storage (APS3): USD 0.01
+Amazon Route 53 HostedZone: USD 2.00
+First 5GB per month of log data ingested is free.: USD 0.00
+Quantity: 
+Invoice ID: 2138692881
+Status: Issued
+Invoice date (UTC): 05/01/2025
+Total savings: USD 0.00
+Savings (0): No data to display.
+Service provider: Amazon Web Services India Private Limited
+Total invoiced charges: USD 6,210.90
+Document type: VAT invoice
+Total tax: USD 947.43
+Total post-tax: USD 0.00
+Document ID: AIN2526000372278
+Charge type: Usage
+Total in invoice currency: INR 528,988.87
+Document type: Invoice
+Total tax: USD 947.43
+Charges by account: (0)
+Amazon Web Services India Private Limited: (13)
+Invoice ID: 2138692881
+Total in USD: USD 6,210.90
+First: 1,000,000
+271 Requests: USD 0.00
+266 Notifications: USD 0.00
+Service name: Simple Email Service
+Pre-tax charges: USD 0.04
+Taxes: USD 0.01
+Post-tax charges: USD 0.05
+
+=== TABLES (CSV Format) ===
+,,,,Status,Total in USD,Total in invoice currency,Total in USD
+Service name,Post-tax charges,Pre-tax charges,Taxes,Issued,USD 6,210.90,INR 528,988.87,USD 6,210.90
+Simple Email Service,USD 0.05,USD 0.04,USD 0.01,USD 0.00,,,
+Elastic Compute Cloud,USD 926.75,USD 785.38,USD 141.37,,,,
+Elastic Load Balancing,USD 363.31,USD 307.89,USD 55.42,,,,
+Simple Storage Service,USD 236.99,USD 200.84,USD 36.15,,,,
+Elastic Container Service,USD 85.07,USD 72.09,USD 12.98,,,,
+End User Messaging,USD 21.65,USD 18.35,USD 3.30,,,,
+EC2 Container Registry (ECR),USD 3.45,USD 2.92,USD 0.53,,,,
+Route 53,USD 2.69,USD 2.28,USD 0.41,,,,
+Amplify,USD 0.61,USD 0.52,USD 0.09,,,,
+CloudWatch,USD 0.47,USD 0.40,USD 0.07,,,,
+Elastic File System,USD 0.19,USD 0.16,USD 0.03,,,,
+End User Messaging,,USD 18.35,,,,,
+Asia Pacific (Mumbai),,USD 18.35,,,,,
+AWS End User Messaging APS3-OutboundSMS-IN-Standard-Sharedroute-MessageCount,,USD 0.00,,,,,
+Number of messages sent to India using a Sharedroute,266 Messages,USD 0.00,,,,,
+AWS End User Messaging APS3-OutboundSMS-IN-Standard-Sharedroute-MessageFees,,USD 18.35,,,,,
+Total message fees sent to India using a Sharedroute,18.354 Dollar,USD 18.35,,,,,
+EC2 Container Registry (ECR),,USD 2.92,,,,,
+Asia Pacific (Mumbai),,USD 2.92,,,,,
+Amazon EC2 Container Registry (ECR) APS3-TimedStorage-ByteHrs,,USD 2.92,,,,,
+$0.10 per GB-month of data storage,29.173 GB-Mo,USD 2.92,,,,,
+Route 53,,USD 2.28,,,,,
+Any,,USD 2.00,,,,,
+Amazon Route 53 HostedZone,,USD 2.00,,,,,
+$0.50 per Hosted Zone for the first 25 Hosted Zones,4 HostedZone,USD 2.00,,,,,
+Global,,USD 0.28,,,,,
+Amazon Route 53 DNS-Queries,,USD 0.28,,,,,
+$0.40 per 1,000,000 queries for the first 1 Billion queries,693,924 Queries,USD 0.28,,,,,
+Amazon Route 53 Intra-AWS-DNS-Queries,,USD 0.00,,,,,
+Queries to Alias records are free of charge,1,741,257 Queries,USD 0.00,,,,,
+Amplify,,USD 0.52,,,,,
+Asia Pacific (Mumbai),,USD 0.52,,,,,
+AWS Amplify APS3-DataStorage,,USD 0.00,,,,,
+USD0.023 per GigaBytes for DataStorage in Asia Pacific (Mumbai),0.046 GigaBytes,USD 0.00,,,,,
+Bandwidth,,USD 0.52,,,,,
+USD0.15 per GigaBytes for DataTransferOut in Asia Pacific (Mumbai),3.484 GigaBytes,USD 0.52,,,,,
+CloudWatch,,USD 0.40,,,,,
+Asia Pacific (Mumbai),,USD 0.40,,,,,
+Amazon CloudWatch,,USD 0.40,,,,,
+$0.00 per alarm metric month - first 10 alarm metrics,10 Alarms,USD 0.00,,,,,
+$0.10 per alarm metric month (standard resolution) - Asia Pacific (Mumbai),4 Alarms,USD 0.40,,,,,
+AmazonCloudWatch APS3-TimedStorage-ByteHrs,,USD 0.00,,,,,
+First 5GB-mo per month of logs storage is free.,0.019 GB-Mo,USD 0.00,,,,,
+AmazonCloudWatch PutLogEvents,,USD 0.00,,,,,
+First 5GB per month of log data ingested is free.,0.063 GB,USD 0.00,,,,,
+Elastic File System,,USD 0.16,,,,,
+Asia Pacific (Mumbai),,USD 0.16,,,,,
+,,USD 0.00,,,,,
+USD $0.0272 per GB-Mo for Infrequent Access usage from small file rounding (<128 KB) (APS3),0 GB-Mo,USD 0.00,,,,,
+Amazon Elastic File System Infrequent Access Requests,,USD 0.00,,,,,
+USD $0.011 per GB for Infrequent Access writes (APS3),0.165 GB,USD 0.00,,,,,
+Amazon Elastic File System Standard Storage Class,,USD 0.15,,,,,
+USD $0.33 per GB-Mo for Standard storage (APS3),0.467 GB-Mo,USD 0.15,,,,,
+Amazon Elastic File System Standard-Infrequent Access Storage Class,,USD 0.01,,,,,
+USD $0.0272 per GB-Mo for Standard-Infrequent Access storage (APS3),0.329 GB-Mo,USD 0.01,,,,,
+Simple Email Service,,USD 0.04,,,,,
+Asia Pacific (Mumbai),,USD 0.04,,,,,
+Amazon Simple Email Service Send,,USD 0.04,,,,,
+USD1.0E-4 per Count for Recipients-EC2:Send in Asia Pacific (Mumbai),371 Count,USD 0.04,,,,,
+CodeCommit,,USD 0.00,,,,,
+Any,,USD 0.00,,,,,
+AWS CodeCommit User-Month,,USD 0.00,,,,,
+$0.00 for first 5 CodeCommit users,1 User-Month,USD 0.00,,,,,
+Key Management Service,,USD 0.00,,,,,
+Asia Pacific (Mumbai),,USD 0.00,,,,,
+AWS Key Management Service ap-south-1-KMS-Requests,,USD 0.00,,,,,
+$0.00 per request - Monthly Global Free Tier for KMS requests,1 Requests,USD 0.00,,,,,
+Simple Notification Service,,USD 0.00,,,,,
+Asia Pacific (Mumbai),,USD 0.00,,,,,
+account,,,,,,,
+Asia Pacific (Mumbai),,USD 200.84,,,,,
+Amazon Simple Storage Service APS3-Requests-Tier1,,USD 4.03,,,,,
+$0.005 per 1,000 PUT, COPY, POST, or LIST requests,218,848 Requests,USD 1.09,,,,,
+$0.005 per 1,000 PUT, COPY, POST, or LIST requests,588,360 Requests,USD 2.94,,,,,
+Amazon Simple Storage Service APS3-Requests-Tier2,,USD 29.77,,,,,
+$0.004 per 10,000 GET and all other requests,15,254,181 Requests,USD 6.10,,,,,
+$0.004 per 10,000 GET and all other requests,59,167,538 Requests,USD 23.67,,,,,
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to South America (Sao Paulo),0 GB,USD 0.00,,,,,
+AWS Data Transfer APS3-SCL1-AWS-In-Bytes,,USD 0.00,,,,,
+$0.00 per GB Asia Pacific (Mumbai) data transfer from Chile (Santiago),0 GB,USD 0.00,,,,,
+AWS Data Transfer APS3-SCL1-AWS-Out-Bytes,,USD 0.00,,,,,
+$0.086 per GB - Asia Pacific (Mumbai) data transfer to Chile (Santiago),0 GB,USD 0.00,,,,,
+AWS Data Transfer APS3-SEA1-AWS-In-Bytes,,USD 0.00,,,,,
+$0 per GB Asia Pacific (Mumbai) Data Transfer to US West (Seattle),0 GB,USD 0.00,,,,,
+AWS Data Transfer APS3-SEA1-AWS-Out-Bytes,,USD 0.00,,,,,
+$0.086 per GB - Asia Pacific (Mumbai) Data Transfer from US West (Seattle),0 GB,USD 0.00,,,,,
+AWS Data Transfer APS3-HAM1-AWS-In-Bytes,,USD 0.00,,,,,
