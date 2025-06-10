@@ -31,7 +31,7 @@ def upload_to_s3(file, key):
 def analyze_with_textract(bucket, file_key):
     response = textract.start_document_analysis(
         DocumentLocation={'S3Object': {'Bucket': bucket, 'Name': file_key}},
-        FeatureTypes=['TABLES', 'FORMS']
+        FeatureTypes=['FORMS']
     )
     job_id = response['JobId']
     while True:
@@ -58,10 +58,9 @@ def analyze_with_textract(bucket, file_key):
     return blocks, None
 
 # --- Extract Data ---
-def extract_forms_tables(blocks):
+def extract_forms(blocks):
     block_map = {b['Id']: b for b in blocks}
     forms = []
-    tables = []
 
     for block in blocks:
         if block['BlockType'] == 'KEY_VALUE_SET' and 'KEY' in block.get('EntityTypes', []):
@@ -84,24 +83,10 @@ def extract_forms_tables(blocks):
                                         value_text += word['Text'] + ' '
             forms.append((key_text.strip(), value_text.strip()))
 
-    for block in blocks:
-        if block['BlockType'] == 'CELL':
-            row = block['RowIndex']
-            col = block['ColumnIndex']
-            text = ''
-            if 'Relationships' in block:
-                for rel in block['Relationships']:
-                    if rel['Type'] == 'CHILD':
-                        for cid in rel['Ids']:
-                            word = block_map.get(cid)
-                            if word and word['BlockType'] == 'WORD':
-                                text += word['Text'] + ' '
-            tables.append((row, col, text.strip()))
-
-    return forms, tables
+    return forms
 
 # --- Claude Prompt Builder ---
-def build_prompt(forms, tables):
+def build_prompt(forms):
     prompt = "Human: You are an AWS cost optimization expert. Based on the bill data below:\n\n"
     prompt += "- Identify the top 3 to 5 of the highest-cost services.\n"
     prompt += "- Recommend precise AWS cost-saving actions \n"
@@ -110,16 +95,6 @@ def build_prompt(forms, tables):
 
     for k, v in forms:
         prompt += f"{k}: {v}\n"
-
-    if tables:
-        prompt += "\nTables:\n"
-        max_row = max(r for r, _, _ in tables)
-        max_col = max(c for _, c, _ in tables)
-        table_data = [['' for _ in range(max_col)] for _ in range(max_row)]
-        for r, c, val in tables:
-            table_data[r-1][c-1] = val
-        for row in table_data:
-            prompt += ', '.join(cell if cell else '' for cell in row) + '\n'
 
     prompt += "\nAssistant:"
     return prompt
@@ -165,27 +140,15 @@ if uploaded_file:
             if error:
                 st.error(error)
             else:
-                forms, tables = extract_forms_tables(blocks)
+                forms = extract_forms(blocks)
 
                 st.subheader("🔑 Key-Value Pairs")
                 for k, v in forms:
                     st.text(f"{k}: {v}")
 
-                if tables:
-                    st.subheader("📊 Tables")
-                    max_row = max(r for r, _, _ in tables)
-                    max_col = max(c for _, c, _ in tables)
-                    table_data = [['' for _ in range(max_col)] for _ in range(max_row)]
-                    for r, c, val in tables:
-                        table_data[r-1][c-1] = val
-                    for row in table_data:
-                        st.text(' | '.join(cell if cell else '-' for cell in row))
-                else:
-                    st.info("No tables found.")
-
                 st.subheader("🤖 Claude’s Cost Optimization Suggestions")
                 with st.spinner("Thinking..."):
-                    prompt = build_prompt(forms, tables)
+                    prompt = build_prompt(forms)
                     suggestion = ask_claude(prompt)
                 st.success("Done!")
                 st.markdown(f"```\n{suggestion.strip()}\n```")
