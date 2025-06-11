@@ -1,0 +1,31 @@
+name: SonarQube Scan
+ 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+ 
+jobs:
+  sonarqube:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+ 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+ 
+      - name: Set up Java (for SonarScanner)
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+ 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
