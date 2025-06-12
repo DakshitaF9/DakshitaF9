@@ -194,7 +194,7 @@ REGION = "us-east-1"
 PROFILE = "eit"
 MODEL_ID = "anthropic.claude-3-5-sonnet-20240620-v1:0"
 MAX_TOKENS = 1000
-TEMPERATURE = 0.5
+TEMPERATURE = 0.4
 TOP_P = 0.7
 
 # --- AWS Session ---
@@ -343,11 +343,17 @@ if 'forms' in st.session_state and st.button("3️⃣ Get Claude Optimization Su
         messages = build_prompt(st.session_state['forms'])
         suggestion = ask_claude(messages)
         st.session_state['claude_suggestion'] = suggestion
+        st.session_state['qa_pairs'] = []
 
     st.subheader("🤖 Claude’s Cost Optimization Suggestions")
     st.markdown(f"```{suggestion.strip()}```")
 
 if 'claude_suggestion' in st.session_state:
+        # Display original suggestions
+    st.subheader("🤖 Claude’s Cost Optimization Suggestions")
+    st.markdown(f"```{st.session_state['claude_suggestion'].strip()}```")
+
+    # Follow-up Q&A input
     user_query = st.text_input("💬 Have a follow-up question?")
     if user_query and st.button("Ask Claude"):
         context = (
@@ -365,5 +371,14 @@ if 'claude_suggestion' in st.session_state:
         with st.spinner("Claude is answering..."):
             followup = ask_claude([{ "role": "user", "content": user_message }])
 
-        st.markdown("🧠 Claude's Response to Your Question:")
-        st.markdown(f"```{followup.strip()}```") 
+        # Save Q&A to session_state
+        if 'qa_pairs' not in st.session_state:
+            st.session_state['qa_pairs'] = []
+        st.session_state['qa_pairs'].append((user_query, followup.strip()))
+
+    # Display all previous Q&A pairs
+    if 'qa_pairs' in st.session_state:
+        st.subheader("🗂️ Follow-Up Questions and Answers")
+        for i, (q, a) in enumerate(st.session_state['qa_pairs'], 1):
+            st.markdown(f"**Q{i}: {q}**")
+            st.markdown(f"> {a}")
