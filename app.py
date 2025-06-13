@@ -216,6 +216,8 @@ if 'claude_suggestion' in st.session_state:
 
  """
 
+# This code below has a button to print a downloadable pdf report.
+
 import streamlit as st
 import boto3
 import time
@@ -366,20 +368,42 @@ def ask_claude(messages):
     return result_json["content"][0]["text"] if result_json.get("content") else "❌ No response from Claude"
 
 # --- PDF Report Generator ---
+from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.styles import ParagraphStyle
+
+from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.styles import ParagraphStyle
+
 def generate_pdf_report(report_text):
     buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=50, leftMargin=50, topMargin=50, bottomMargin=50)
+
     styles = getSampleStyleSheet()
+    styles.add(ParagraphStyle(name='CustomHeading1', fontSize=14, leading=18, spaceAfter=12, alignment=TA_LEFT, fontName='Helvetica-Bold'))
+    styles.add(ParagraphStyle(name='CustomBullet', leftIndent=20, bulletIndent=10, spaceAfter=6, fontSize=10))
+    styles.add(ParagraphStyle(name='BodyTextCustom', fontSize=11, leading=15, spaceAfter=10))
+
     story = []
 
-    story.append(Paragraph("AWS Cost Optimization Report", styles['Title']))
+    # Title
+    story.append(Paragraph("AWS Cost Optimization Report", styles['CustomHeading1']))
     story.append(Spacer(1, 12))
 
-    paragraphs = report_text.split('\n\n')
-    for para in paragraphs:
-        para = para.strip().replace('\n', '<br/>')  # preserve line breaks
-        story.append(Paragraph(para, styles['Normal']))
-        story.append(Spacer(1, 12))
+    # Process sections
+    sections = report_text.strip().split("\n\n")
+    for section in sections:
+        if section.strip().lower().startswith(("objective", "summary", "analysis", "recommendations")):
+            story.append(Paragraph(section.strip(), styles['CustomHeading1']))
+        elif section.strip().startswith(("-", "*")):
+            for line in section.split('\n'):
+                bullet_text = line.strip().lstrip('-*').strip()
+                if bullet_text:
+                    story.append(Paragraph(f'• {bullet_text}', styles['CustomBullet']))
+        else:
+            # Regular paragraph
+            story.append(Paragraph(section.strip().replace("\n", "<br/>"), styles['BodyTextCustom']))
+
+        story.append(Spacer(1, 6))
 
     doc.build(story)
     pdf = buffer.getvalue()
@@ -445,7 +469,7 @@ if 'claude_suggestion' in st.session_state:
             "You are an AWS cost optimization expert. Provide a clear, professional answer to the user's follow-up question "
             "based on the AWS bill data and your earlier recommendations. Use concise paragraphs and bullet points where appropriate."
             " Do not repeat earlier suggestions or raw bill data.\n\n"
-            "Bill Data:\n"
+            "Bill Data:\n" 
         )
         for k, v in st.session_state['forms']:
             context += f"{k}: {v}\n"
@@ -461,7 +485,7 @@ if 'claude_suggestion' in st.session_state:
         save_to_dynamodb(st.session_state['file_key'], "qa", f"Q: {user_query}\nA: {followup.strip()}")
 
 if 'qa_pairs' in st.session_state:
-    st.subheader("🗂️ Follow-Up Questions and Answers")
+    st.subheader("🤔 Follow-Up Questions and Answers")
     for i, (q, a) in enumerate(st.session_state['qa_pairs'], 1):
         st.markdown(f"**Q{i}: {q}**")
         st.markdown(f"> {a}")
