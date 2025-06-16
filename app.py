@@ -216,12 +216,15 @@ if 'claude_suggestion' in st.session_state:
 
  """
 
-# This code below has a button to print a downloadable pdf report.
+# This code below has a button to give you a graphical representation.
 
 import streamlit as st
 import boto3
 import time
+import re
 import json
+import numpy as np
+import matplotlib.pyplot as plt
 from boto3.dynamodb.conditions import Key
 from io import BytesIO
 from reportlab.lib.pagesizes import letter
@@ -338,6 +341,10 @@ def build_prompt(forms, file_key=None):
         "\n".join(f"{k}: {v}" for k, v in forms)
     )
 
+    base += ("\n Also, return a JSON array (at the very end) showing correctly estimated cost before and after optimization for each major AWS service in the following format :\n"
+            '[{"service": "EC2", "before": 300, "after": 200}, {"service": "S3", "before": 120, "after": 100}]\n'
+    "Only return this JSON array after all recommendations, so it can be used for plotting.")
+
     messages = [{"role": "user", "content": base}]
 
     if file_key:
@@ -366,6 +373,19 @@ def ask_claude(messages):
     )
     result_json = json.loads(response['body'].read().decode('utf-8'))
     return result_json["content"][0]["text"] if result_json.get("content") else "❌ No response from Claude"
+
+def extract_cost_json_from_suggestion(text):
+    try: 
+        json_match = re.search(r'\[\s*\{.*?\}\s*\]', text, re.DOTALL)
+        if json_match:
+            return json.loads(json_match.group(0))
+    except Exception as e:
+        st.warning(f"Could not parse cost chart data: {e}")
+    return []
+
+def extract_suggestions_only(text):
+    # Remove the JSON array at the end of the text (if present)
+    return re.sub(r'\[\s*\{.*\}\s*\]\s*$', '', text.strip(), flags=re.DOTALL).strip()
 
 # --- PDF Report Generator ---
 from reportlab.lib.enums import TA_LEFT
@@ -447,19 +467,81 @@ if 'forms' in st.session_state and st.button("3️⃣ Get Claude Optimization Su
         messages = build_prompt(st.session_state['forms'], st.session_state['file_key'])
         suggestion = ask_claude(messages)
         st.session_state['claude_suggestion'] = suggestion
+        st.session_state['cost_chart_data'] = extract_cost_json_from_suggestion(suggestion)
         st.session_state['qa_pairs'] = []
         save_to_dynamodb(st.session_state['file_key'], "suggestion", suggestion.strip())
 
-if 'claude_suggestion' in st.session_state:
+if "claude_suggestion" in st.session_state:
     st.subheader("🤖 Claude’s Cost Optimization Suggestions")
-    st.markdown(f"```{st.session_state['claude_suggestion'].strip()}```")
+    suggestions_only = extract_suggestions_only(st.session_state['claude_suggestion'])
+    st.markdown(f"```{suggestions_only}```")
+
+
+    if st.button("📊 Show Cost Optimization Visualization"):
+        suggestion_text = st.session_state["claude_suggestion"]
+        json_block = None
+
+        try:
+            json_candidates = re.findall(r'\[\s*{.*?}\s*\]', suggestion_text, re.DOTALL)
+            if json_candidates:
+                json_block = json.loads(json_candidates[-1])
+        except Exception as e:
+            st.warning("⚠️ Failed to parse JSON from Claude's response.")
+            st.stop()
+
+        if not json_block:
+            st.error("❌ No cost optimization data found in Claude’s response.")
+            st.stop()
+
+            # Filter and format cost optimization data
+        filtered_data = [
+            item for item in json_block
+            if abs(item["before"] - item["after"]) >= 2
+        ]
+
+        if not filtered_data:
+            st.info("ℹ️ No significant optimizations (≥ $2 savings) to plot.")
+            st.stop()
+
+        # Format service names and prepare data
+        def format_service_name(name):
+            return name.upper().replace("_", " ").replace("-", " ").title()
+
+        services = [format_service_name(item["service"]) for item in filtered_data]
+        before_costs = np.array([item["before"] for item in filtered_data])
+        after_costs = np.array([item["after"] for item in filtered_data])
+
+        # Plotting
+        x = np.arange(len(services))
+        width = 0.35
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+
+        bars1 = ax.bar(x - width/2, before_costs, width, label='Before Optimization', color='tomato', edgecolor='black')
+        bars2 = ax.bar(x + width/2, after_costs, width, label='After Optimization', color='seagreen', edgecolor='black')
+
+        # Labels and title
+        ax.set_ylabel('Monthly Cost (USD)', fontsize=12)
+        ax.set_title('AWS Services with Significant Cost Optimization', fontsize=14, weight='bold')
+        ax.set_xticks(x)
+        ax.set_xticklabels(services, ha='right', fontsize=10, rotation=30)
+        ax.legend(fontsize=10)
+        ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+        # Add value labels
+        ax.bar_label(bars1, padding=3, fmt='%.2f', fontsize=8)
+        ax.bar_label(bars2, padding=3, fmt='%.2f', fontsize=8)
+
+        plt.tight_layout()
+        st.pyplot(fig)
 
     # PDF download button
-    pdf_bytes = generate_pdf_report(st.session_state['claude_suggestion'].strip())
+    clean_suggestion = extract_suggestions_only(st.session_state['claude_suggestion'])
+    pdf_bytes = generate_pdf_report(clean_suggestion)
     st.download_button(
-        label="📄 Download Professional PDF Report",
+        label="📄 Download PDF Report",
         data=pdf_bytes,
-        file_name="AWS_Cost_Optimization_Report.pdf",
+        file_name="Cost_Report.pdf",
         mime="application/pdf"
     )
 
@@ -484,8 +566,7 @@ if 'claude_suggestion' in st.session_state:
         st.session_state['qa_pairs'].append((user_query, followup.strip()))
         save_to_dynamodb(st.session_state['file_key'], "qa", f"Q: {user_query}\nA: {followup.strip()}")
 
-if 'qa_pairs' in st.session_state:
-    st.subheader("🤔 Follow-Up Questions and Answers")
-    for i, (q, a) in enumerate(st.session_state['qa_pairs'], 1):
-        st.markdown(f"**Q{i}: {q}**")
-        st.markdown(f"> {a}")
+    if 'qa_pairs' in st.session_state:
+        for i, (q, a) in enumerate(st.session_state['qa_pairs'], 1):
+            st.markdown(f"**Q{i}: {q}**")
+            st.markdown(f"> {a}")
