@@ -34,7 +34,8 @@ TOP_P = float(os.getenv("CLAUDE_TOP_P"))
 table = os.getenv("DYNAMO_TABLE")
 
 # --- AWS Session ---
-session = boto3.Session(profile_name=PROFILE)
+#session = boto3.Session(profile_name=PROFILE)
+session = boto3.Session()
 s3 = session.client("s3", region_name=REGION)
 textract = session.client("textract", region_name=REGION)
 bedrock = session.client("bedrock-runtime", region_name=REGION)
