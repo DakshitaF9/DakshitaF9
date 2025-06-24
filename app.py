@@ -1,4 +1,4 @@
-# This code below has a button to give you a graphical representation.
+# This code has a permanent graphical representation.
 
 import streamlit as st
 
@@ -249,10 +249,6 @@ if 'file_key' in st.session_state and st.button("2️⃣ Analyze with Textract")
         st.session_state['forms'] = extract_forms(blocks)
         st.success("✅ Textract completed!")
 
-        st.subheader("🔑 Extracted Key-Value Pairs")
-        for k, v in st.session_state['forms']:
-            st.text(f"{k}: {v}")
-
 if 'forms' in st.session_state and st.button("3️⃣ Get Claude Optimization Suggestions"):
     with st.spinner("Claude is thinking..."):
         messages = build_prompt(st.session_state['forms'], st.session_state['file_key'])
@@ -267,63 +263,66 @@ if "claude_suggestion" in st.session_state:
     suggestions_only = extract_suggestions_only(st.session_state['claude_suggestion'])
     st.markdown(f"```{suggestions_only}```")
 
-    if st.button("📊 Show Cost Optimization Visualization"):
-        suggestion_text = st.session_state["claude_suggestion"]
-        json_block = None
+    # Adding a flag
+if "cost_plot_shown" not in st.session_state:
+    st.session_state["cost_plot_shown"] = False
 
-        try:
-            json_candidates = re.findall(r'\[\s*{.*?}\s*\]', suggestion_text, re.DOTALL)
-            if json_candidates:
-                json_block = json.loads(json_candidates[-1])
-        except Exception as e:
-            st.warning("⚠️ Failed to parse JSON from Claude's response.")
-            st.stop()
+# When user presses the button once, store flag
+if st.button("📊 Show Cost Optimization Visualization"):
+    st.session_state["cost_plot_shown"] = True
 
-        if not json_block:
-            st.error("❌ No cost optimization data found in Claude’s response.")
-            st.stop()
+# If flag is True, always show the plot
+if st.session_state["cost_plot_shown"]:
+    suggestion_text = st.session_state["claude_suggestion"]
+    json_block = None
 
-            # Filter and format cost optimization data
-        filtered_data = [
-            item for item in json_block
-            if abs(item["before"] - item["after"]) >= 2
-        ]
+    try:
+        json_candidates = re.findall(r'\[\s*{.*?}\s*\]', suggestion_text, re.DOTALL)
+        if json_candidates:
+            json_block = json.loads(json_candidates[-1])
+    except Exception as e:
+        st.warning("⚠️ Failed to parse JSON from Claude's response.")
+        st.stop()
 
-        if not filtered_data:
-            st.info("ℹ️ No significant optimizations (≥ $2 savings) to plot.")
-            st.stop()
+    if not json_block:
+        st.error("❌ No cost optimization data found in Claude’s response.")
+        st.stop()
 
-        # Format service names and prepare data
-        def format_service_name(name):
-            return name.upper().replace("_", " ").replace("-", " ").title()
+    # Filter and format cost optimization data
+    filtered_data = [
+        item for item in json_block
+        if abs(item["before"] - item["after"]) >= 2
+    ]
 
-        services = [format_service_name(item["service"]) for item in filtered_data]
-        before_costs = np.array([item["before"] for item in filtered_data])
-        after_costs = np.array([item["after"] for item in filtered_data])
+    if not filtered_data:
+        st.info("ℹ️ No significant optimizations (≥ $2 savings) to plot.")
+        st.stop()
 
-        # Plotting
-        x = np.arange(len(services))
-        width = 0.35
+    def format_service_name(name):
+        return name.upper().replace("_", " ").replace("-", " ").title()
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+    services = [format_service_name(item["service"]) for item in filtered_data]
+    before_costs = np.array([item["before"] for item in filtered_data])
+    after_costs = np.array([item["after"] for item in filtered_data])
 
-        bars1 = ax.bar(x - width/2, before_costs, width, label='Before Optimization', color='tomato', edgecolor='black')
-        bars2 = ax.bar(x + width/2, after_costs, width, label='After Optimization', color='seagreen', edgecolor='black')
+    # Plotting
+    x = np.arange(len(services))
+    width = 0.35
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars1 = ax.bar(x - width/2, before_costs, width, label='Before Optimization', color='tomato', edgecolor='black')
+    bars2 = ax.bar(x + width/2, after_costs, width, label='After Optimization', color='seagreen', edgecolor='black')
 
-        # Labels and title
-        ax.set_ylabel('Monthly Cost (USD)', fontsize=12)
-        ax.set_title('AWS Services with Significant Cost Optimization', fontsize=14, weight='bold')
-        ax.set_xticks(x)
-        ax.set_xticklabels(services, ha='right', fontsize=10, rotation=30)
-        ax.legend(fontsize=10)
-        ax.grid(axis='y', linestyle='--', alpha=0.7)
+    ax.set_ylabel('Monthly Cost (USD)', fontsize=12)
+    ax.set_title('AWS Services with Significant Cost Optimization', fontsize=14, weight='bold')
+    ax.set_xticks(x)
+    ax.set_xticklabels(services, ha='right', fontsize=10, rotation=30)
+    ax.legend(fontsize=10)
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+    ax.bar_label(bars1, padding=3, fmt='%.2f', fontsize=8)
+    ax.bar_label(bars2, padding=3, fmt='%.2f', fontsize=8)
 
-        # Add value labels
-        ax.bar_label(bars1, padding=3, fmt='%.2f', fontsize=8)
-        ax.bar_label(bars2, padding=3, fmt='%.2f', fontsize=8)
-
-        plt.tight_layout()
-        st.pyplot(fig)
+    plt.tight_layout()
+    st.pyplot(fig)
 
     # PDF download button
     clean_suggestion = extract_suggestions_only(st.session_state['claude_suggestion'])
